@@ -1,0 +1,41 @@
+<!DOCTYPE hmtl>
+<html lang="en" ng-app="quoteBook">
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-controller="mainCtrl">
+		<h1>My Favorite Quotes</h1>
+		<div class="buttonContainer">
+			<button ng-click="addQuote()"> Add Quote</button>
+			<button ng-click="removeQuote()"> Remove Quote</button>
+			<button ng-click="filter()"> Filter</button>
+		</div>
+		<div class="inputFields">
+			<div ng-show="showAddQuote">
+				<input type="text" placeholder="Quote" ng-model="text">
+				<input type="text" placeholder="Author" ng-model="author">
+				<button ng-click="submitQuote()">Submit</button>
+			</div>
+			<div ng-show="showRemoveQuote">
+				<input type="text" placeholder="Quote" ng-model="text">
+				<button ng-click="deleteQuote()">Submit</button>
+			</div>
+			<div ng-show="showFilter">
+				<input type="text" placeholder="Quote" ng-model="searchText">
+			</div>
+		</div>
+		<div class="mainContainer"
+			<div class="quoteListText" ng-repeat="quote in list | filter:searchText">
+				<div> {{quote.text}} </div>
+				<div class="author"> - {{quote.author}} </div>
+			</div>
+		</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/mainCtrl.js"></script>
+	<script src="js/dataService.js"></script>
+	</body>
+</html>
